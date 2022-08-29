@@ -13,6 +13,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       const HomeInitialState([])) {
     on<HomePostGetEvent>(getPosts);
     on<HomeDeleteEvent>(deletePost);
+    on<HomeUpdateEvent>(updatePost);
+    on<HomeCreateEvent>(createPost);
   }
 
 
@@ -28,6 +30,26 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if(state is HomePostGetState){
       emit( HomePostLoadingState());
       await postRepository.deletePost(event.id);
+    }
+    var result = await postRepository.getAllPost();
+    emit(HomePostGetState(result));
+  }
+
+  Future<void> updatePost(HomeUpdateEvent event, Emitter<HomeState> emit) async {
+    final state = this.state;
+    if(state is HomePostGetState){
+      emit( HomePostLoadingState());
+      await postRepository.updatePost(event.post);
+    }
+    var result = await postRepository.getAllPost();
+    emit(HomePostGetState(result));
+  }
+
+  Future<void> createPost(HomeCreateEvent event, Emitter<HomeState> emit) async {
+    final state = this.state;
+    if(state is HomePostGetState){
+      emit( HomePostLoadingState());
+      await postRepository.createPost(event.post);
     }
     var result = await postRepository.getAllPost();
     emit(HomePostGetState(result));

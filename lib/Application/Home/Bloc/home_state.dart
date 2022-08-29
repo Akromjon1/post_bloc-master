@@ -23,3 +23,17 @@ class HomePostGetState extends HomeState{
 
   const HomePostGetState(this.items);
 }
+
+class HomeUpdatePostLoading extends HomeState{
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+
+}
+
+class HomeUpdatePostLoaded extends HomeState{
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
+
+}

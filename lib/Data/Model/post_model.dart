@@ -1,21 +1,43 @@
-class Post {
-  late int id;
-  late String title;
-  late String body;
-  late int userId;
+//
+// class Post {
+//   int id;
+//   String title;
+//   String body;
+//   int userId;
+//
+//   Post({required this.id, required this.title, required this.body, required this.userId});
+//
+//   Post.fromJson(Map<String, dynamic> json)
+//       : id = json['id'],
+//         title = json['title'],
+//         body = json['body'],
+//         userId = json['userId'];
+//
+//   Map<String, dynamic> toJson() => {
+//     'id': id,
+//     'title': title,
+//     'body': body,
+//     'userId': userId,
+//   };
+// }
 
-  Post({required this.id, required this.title, required this.body, required this.userId});
+
+
+class Post {
+  String id;
+  String fullname;
+  String mobile;
+
+  Post({required this.id, required this.fullname, required this.mobile});
 
   Post.fromJson(Map<String, dynamic> json)
       : id = json['id'],
-        title = json['title'],
-        body = json['body'],
-        userId = json['userId'];
+        fullname = json['fullname'],
+        mobile = json['mobile'];
 
   Map<String, dynamic> toJson() => {
     'id': id,
-    'title': title,
-    'body': body,
-    'userId': userId,
+    'fullname': fullname,
+    'mobile': mobile,
   };
 }

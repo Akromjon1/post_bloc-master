@@ -1,8 +1,8 @@
 class ApiConstants {
-  static String baseUrl = "jsonplaceholder.typicode.com";
+  static String baseUrl = "630c43f383986f74a7bc1535.mockapi.io";
 
-  static String apiPost = "/posts";
-  static String apiCreate = "/posts";
-  static String apiUpdate = "/posts/";
-  static String apiDelete = "/posts/";
+  static String apiPost = "/contacts";
+  static String apiCreate = "/contacts";
+  static String apiUpdate = "/contacts/";
+  static String apiDelete = "/contacts/";
 }

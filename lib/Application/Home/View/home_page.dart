@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:post_bloc/Application/Home/Bloc/home_bloc.dart';
+import 'package:post_bloc/Application/Home/View/create_page.dart';
+import 'package:post_bloc/Application/Home/View/update_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,7 +28,8 @@ class HomePage extends StatelessWidget {
                     motion: const ScrollMotion(),
                     children: [
                       SlidableAction(
-                        onPressed: (BuildContext context) {
+                        onPressed: (_) {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> UpdatePage(post: state.items[index])));
                         },
                         backgroundColor: const Color(0xFF21B7CA),
                         foregroundColor: Colors.white,
@@ -53,7 +56,7 @@ class HomePage extends StatelessWidget {
                   ),
                   child:  ListTile(
                     title: Text(
-                      state.items[index].title,
+                      state.items[index].fullname,
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -61,7 +64,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     subtitle: Text(
-                      state.items[index].body,
+                      state.items[index].mobile,
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -77,6 +80,11 @@ class HomePage extends StatelessWidget {
           return const Center(
             child: CircularProgressIndicator(),
           );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePage()));
         },
       ),
     );

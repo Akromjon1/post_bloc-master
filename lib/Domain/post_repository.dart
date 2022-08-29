@@ -20,17 +20,19 @@ class PostRepository {
       List json = jsonDecode(response);
       list = json.map((element) => Post.fromJson(element)).toList();
     }
-
     return list;
   }
 
   Future<String?> updatePost(Post post) async {
-    String? response = await networkProvider.PUT(ApiConstants.baseUrl, ApiConstants.apiPost, post.toJson());
+    String? response = await networkProvider.PUT(ApiConstants.baseUrl, ApiConstants.apiUpdate + post.id, post.toJson());
     return response;
   }
-
+  Future<String?> createPost(Post post) async {
+    String? response = await networkProvider.POST(ApiConstants.baseUrl, ApiConstants.apiCreate, post.toJson());
+    return response;
+  }
   Future<String?> deletePost(id) async{
-    String? response = await networkProvider.DELETE(ApiConstants.baseUrl, ApiConstants.apiDelete + id.toString());
+    String? response = await networkProvider.DELETE(ApiConstants.baseUrl, ApiConstants.apiDelete + id);
     return response;
   }
 
